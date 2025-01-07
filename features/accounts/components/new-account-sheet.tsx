@@ -7,7 +7,7 @@ import {
   SheetTitle,
 } from "@/components/ui/sheet";
 
-import { AccountForm } from "@/features/accounts/components/account-form";
+import { AccountForm } from "./account-form";
 
 export const NewAccountSheet = () => {
   const { isOpen, onClose } = useNewAccount();
