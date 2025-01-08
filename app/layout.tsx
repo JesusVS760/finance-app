@@ -4,6 +4,7 @@ import { clerkMiddleware } from "@clerk/nextjs/server";
 import "./globals.css";
 import { ClerkProvider } from "@clerk/nextjs";
 import { QueryProvider } from "@/provider/query-provider";
+import { Toaster } from "@/components/ui/sonner";
 import { SheetProvider } from "@/provider/sheet-provider";
 
 const geistSans = Geist({
@@ -34,6 +35,7 @@ export default function RootLayout({
         >
           <QueryProvider>
             <SheetProvider />
+            <Toaster />
             {children}
           </QueryProvider>
         </body>
