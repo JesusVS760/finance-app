@@ -75,7 +75,7 @@ export const AccountForm = ({
           <Button
             type="button"
             disabled={disabled}
-            onClick={() => handleDelete}
+            onClick={handleDelete}
             className="w-full"
             variant="outline"
           >
