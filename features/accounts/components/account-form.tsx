@@ -42,7 +42,7 @@ export const AccountForm = ({
   const handleSubmit = (values: FormValues) => {
     onSubmit(values);
   };
-  const handleDelete = (values: FormValues) => {
+  const handleDelete = () => {
     onDelete?.();
   };
 

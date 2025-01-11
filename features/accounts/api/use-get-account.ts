@@ -13,7 +13,9 @@ export const useGetAccount = (id?: string) => {
       if (!response) {
         throw new Error("Failed to fetch accounts");
       }
-      const { data } = await response.json();
+      const { data } = (await response.json()) as {
+        data: { id: string; name: string };
+      };
       return data;
     },
   });
