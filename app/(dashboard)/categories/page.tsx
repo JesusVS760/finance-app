@@ -1,4 +1,6 @@
 "use client";
+import { useNewCategory } from "@/features/categories/hooks/use-new-category";
+
 import {
   Card,
   CardContent,
@@ -8,7 +10,6 @@ import {
 } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Loader2, Plus } from "lucide-react";
-import { useNewCategory } from "@/features/categories/hooks/use-new-category";
 import { columns } from "./columns";
 import { Skeleton } from "@/components/ui/skeleton";
 import { DataTable } from "@/components/ui/data-table";
@@ -16,7 +17,7 @@ import { useGetCategories } from "@/features/categories/api/use-get-categories";
 import { useBulkDeleteCategories } from "@/features/categories/api/use-bulk-delete-categories";
 
 const CategoryPage = () => {
-  const newCategory = useNewCategory();
+  const newCategoryHook = useNewCategory();
   const deleteCategories = useBulkDeleteCategories();
   const categoriesQuery = useGetCategories();
   const categories = categoriesQuery.data || [];
@@ -46,7 +47,7 @@ const CategoryPage = () => {
           <CardTitle className="text-xl line-clamp-1">
             Categories Page
           </CardTitle>
-          <Button onClick={newCategory.onOpen} size="sm">
+          <Button onClick={newCategoryHook.onOpen} size="sm">
             <Plus className="size-4 mr-2" />
             Add new
           </Button>
