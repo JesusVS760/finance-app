@@ -1,5 +1,5 @@
-import { AccountForm } from "./transaction-form";
-import { insertAccountSchema } from "@/db/schema";
+import { TransactionForm } from "./transaction-form";
+import { insertTransactionsSchema } from "@/db/schema";
 import { z } from "zod";
 import {
   Sheet,
@@ -16,7 +16,7 @@ import { useConfirm } from "@/hooks/use-confirm";
 
 import { Loader2 } from "lucide-react";
 
-const formSchema = insertAccountSchema.pick({
+const formSchema = insertTransactionsSchema.pick({
   name: true,
 });
 type FormValues = z.input<typeof formSchema>;
@@ -79,7 +79,7 @@ export const EditAccountSheet = () => {
               <Loader2 className="size-4 text-muted-foreground animate-spin" />
             </div>
           ) : (
-            <AccountForm
+            <TransactionForm
               id={id}
               onSubmit={onSubmit}
               disabled={isPending}
