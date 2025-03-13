@@ -43,6 +43,7 @@ export const NewTranactionSheet = () => {
     accountMutation.mutate({
       name,
     });
+  // returns empty array if accountQuery is null or undefined
   const accountOptions = (accountQuery.data ?? []).map((account) => ({
     label: account.name,
     value: account.id,
