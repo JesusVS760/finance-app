@@ -85,7 +85,7 @@ export const NewTranactionSheet = () => {
             onCreateAccount={onCreateAccount}
           />
         )}
-        <p>Transaction Form</p>
+        {/* <p>Transaction Form</p> */}
       </SheetContent>
     </Sheet>
   );

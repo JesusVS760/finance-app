@@ -6,17 +6,18 @@ import { useNewTransaction } from "@/features/transactions/hooks/use-new-transac
 import { columns } from "./columns";
 import { Skeleton } from "@/components/ui/skeleton";
 import { DataTable } from "@/components/ui/data-table";
-import { useGetAccounts } from "@/features/accounts/api/use-get-accounts";
-import { useBulkDeleteAccounts } from "@/features/accounts/api/use-bulk-delete-accounts";
+import { useGetTransactions } from "@/features/transactions/api/use-get-transactions";
+import { useBulkDeleteTransactions } from "@/features/transactions/api/use-bulk-delete-transactions";
+
 const TransactionsPage = () => {
   const newTransaction = useNewTransaction();
-  const deleteAccounts = useBulkDeleteAccounts();
-  const accountsQuery = useGetAccounts();
-  const accounts = accountsQuery.data || [];
+  const deleteTransactions = useBulkDeleteTransactions();
+  const transactionQuery = useGetTransactions();
+  const transactions = transactionQuery.data || [];
 
-  const isDisabled = accountsQuery.isLoading || deleteAccounts.isPending;
+  const isDisabled = transactionQuery.isLoading || deleteTransactions.isPending;
 
-  if (accountsQuery.isLoading) {
+  if (transactionQuery.isLoading) {
     return (
       <div className="max-2-screen-2xl mx-auto w-full pb-10 -mt-24">
         <Card className="border-non drop-shadow-sm">
@@ -48,11 +49,11 @@ const TransactionsPage = () => {
           <DataTable
             onDelete={(row) => {
               const ids = row.map((r) => r.original.id);
-              deleteAccounts.mutate({ ids });
+              deleteTransactions.mutate({ ids });
             }}
-            filterKey="name"
+            filterKey="date"
             columns={columns}
-            data={accounts}
+            data={transactions}
             disabled={isDisabled}
           />
         </CardContent>
