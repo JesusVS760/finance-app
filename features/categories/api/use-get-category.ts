@@ -9,13 +9,11 @@ export const useGetCategory = (id?: string) => {
       const response = await client.api.categories[":id"].$get({
         param: { id },
       });
-
       if (!response) {
         throw new Error("Failed to fetch category");
       }
-      const { data } = (await response.json()) as {
-        data: { id: string; name: string };
-      };
+      const { data } = await response.json();
+
       return data;
     },
   });

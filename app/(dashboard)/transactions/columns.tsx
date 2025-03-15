@@ -9,6 +9,7 @@ import { Actions } from "./actions";
 import { format } from "date-fns";
 import { formatCurrency } from "@/lib/utils";
 import { Badge } from "@/components/ui/badge";
+import { AccountColumn } from "./account-column";
 
 // This type is used to define the shape of our data.
 // You can use a Zod schema here if you want.
@@ -113,6 +114,28 @@ export const columns: ColumnDef<ResponseType>[] = [
         >
           {formatCurrency(amount)}
         </Badge>
+      );
+    },
+  },
+  {
+    accessorKey: "account",
+    header: ({ column }) => {
+      return (
+        <Button
+          variant="ghost"
+          onClick={() => column.toggleSorting(column.getIsSorted() === "asc")}
+        >
+          Account
+          <ArrowUpDown className="ml-2 h-4 w-4" />
+        </Button>
+      );
+    },
+    cell: ({ row }) => {
+      return (
+        <AccountColumn
+          account={row.original.account}
+          accountId={row.original.accountId}
+        />
       );
     },
   },
