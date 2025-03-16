@@ -9,8 +9,6 @@ export const runtime = "edge";
 
 const app = new Hono().basePath("/api");
 
-app.route("/accounts", accounts);
-
 const routes = app
   .route("/accounts", accounts)
   .route("/categories", categories)

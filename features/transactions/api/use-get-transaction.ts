@@ -13,12 +13,8 @@ export const useGetTransaction = (id?: string) => {
       if (!response) {
         throw new Error("Failed to fetch transaction");
       }
-      const { data } = (await response.json()) as unknown as {
-        data: {
-          name: string;
-          id: string;
-        };
-      };
+      const { data } = await response.json();
+
       return data;
     },
   });
