@@ -51,7 +51,7 @@ const TransactionsPage = () => {
               const ids = row.map((r) => r.original.id);
               deleteTransactions.mutate({ ids });
             }}
-            filterKey="date"
+            filterKey="payee"
             columns={columns}
             data={transactions}
             disabled={isDisabled}

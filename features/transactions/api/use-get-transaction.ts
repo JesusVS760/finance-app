@@ -14,7 +14,7 @@ export const useGetTransaction = (id?: string) => {
         throw new Error("Failed to fetch transaction");
       }
       const { data } = await response.json();
-
+      console.log(data);
       return data;
     },
   });

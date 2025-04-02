@@ -1,4 +1,4 @@
-import {  InferResponseType } from "hono";
+import { InferResponseType } from "hono";
 import { toast } from "sonner";
 import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { client } from "@/lib/hono";
@@ -21,6 +21,7 @@ export const useDeleteCategory = (id?: string) => {
       toast.success("Account deleted");
       queryClient.invalidateQueries({ queryKey: ["category", { id }] });
       queryClient.invalidateQueries({ queryKey: ["categories"] });
+      queryClient.invalidateQueries({ queryKey: ["transactions"] });
     },
     onError: () => {
       toast.error("Failed to delete category!");
