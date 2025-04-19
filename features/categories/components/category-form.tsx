@@ -36,6 +36,7 @@ export const CategoryForm = ({
 }: Props) => {
   const form = useForm<FormValues>({
     resolver: zodResolver(formSchema),
+
     defaultValues: defaultValues,
   });
 
