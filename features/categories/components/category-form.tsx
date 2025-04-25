@@ -35,8 +35,7 @@ export const CategoryForm = ({
   disabled,
 }: Props) => {
   const form = useForm<FormValues>({
-    resolver: zodResolver(formSchema),
-
+    resolver: zodResolver(formSchema), // converts validation rules defined by zod to readable format for react hook form (validates data)
     defaultValues: defaultValues,
   });
 
